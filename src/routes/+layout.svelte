@@ -29,7 +29,7 @@
 	</button>
 {/snippet}
 
-<nav class='flex justify-between bg-tw-blue-100'>
+<nav class='flex justify-between bg-tw-blue-100/80'>
 	<a href='/'
 		class='size-48 h-20 my-auto ml-10 mt-2 px-1 hover:bg-black/10 rounded-sm'>
 		<img src='/logo-title.png'

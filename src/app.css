@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
@@ -7,6 +8,9 @@
     --color-tw-blue-200: #2d9da6;
     --color-tw-gray-100: #d6d6d6;
     --color-tw-gray-200: #98a2aa;
+    --color-tw-gray-400: #333333;
+    --color-tw-gray-600: #2b2b2b;
     --color-tw-orange: #ea9742;
     --color-tw-black: #222222;
+    --font-script: "Alex Brush", cursive;
 }
