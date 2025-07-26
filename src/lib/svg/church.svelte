@@ -7,8 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     id="canvas"
     viewBox="693.844 439.223 1060.427 292.091"
-    class='stroke-tw-blue-100 fill-tw-blue-100/0 inline stroke-11 -ml-10 drop-shadow-md drop-shadow-black'
-    width='450'
+    class='stroke-tw-blue-100 fill-tw-blue-100/0 inline stroke-11 -ml-5 md:-ml-10 drop-shadow-md drop-shadow-black w-[230px] md:w-[450px]'
 >
     {#if show}
     <path 

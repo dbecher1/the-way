@@ -6,7 +6,7 @@
     import intersection from '$lib/actions/intersection';
     import makevisible from '$lib/actions/makevisible';
 
-    const noTransitions = false;
+    const noTransitions = true;
     const useSvg = true;
 
     let showText1 = $state(noTransitions);
@@ -72,18 +72,18 @@
 {/snippet}
 
 {#snippet home_info_button(id: string, href: string, text: string)}
-        <a
-            {href}
-            {id}
-            class='hover:bg-tw-blue-100 bg-tw-blue-200 text-xl py-1 px-4 rounded-xl text-shadow-none text-gray-300 hover:text-gray-400 font-semibold tracking-tight hover:shadow-md shadow-sm hover:scale-105 border-2 border-black/40'
-        >
-            <span class='scale-100'>{text}</span>
-        </a>
+    <a
+        {href}
+        {id}
+        class='hover:bg-tw-blue-100 bg-tw-blue-200 text-xl py-1 px-4 rounded-xl text-shadow-none text-gray-300 hover:text-gray-400 font-semibold tracking-tight hover:shadow-md shadow-sm hover:scale-105 border-2 border-black/40'
+    >
+        <span class='scale-100'>{text}</span>
+    </a>
 {/snippet}
 
 <div class='h-fit flex flex-col'>
 
-    <div class='mx-auto mt-50 mb-30 uppercase text-gray-100 text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
+    <div id='logo' class='mx-auto mt-32 md:mt-50 mb-30 uppercase text-gray-100 text-5xl md:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
 
         {#if showText1}
         <div
@@ -114,9 +114,14 @@
         {/if}
     </div>
 
-    <div
-        id='home-info'
-        class='mx-auto w-5/8 text-gray-50 text-shadow-md text-shadow-tw-black text-4xl flex justify-between'
+    <div id='home-info-mobile'
+        class='md:hidden bg-white w-7/8 h-full'
+    >
+
+    </div>
+
+    <div id='home-info-web'
+        class='hidden flex mx-auto w-5/8 text-gray-50 text-shadow-md text-shadow-tw-black text-4xl justify-between'
         use:intersection={{
             cb: () => intersecting = true
         }} 
