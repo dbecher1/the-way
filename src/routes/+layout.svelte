@@ -86,15 +86,12 @@
 		<div id='sidebar-body' class='flex h-full'>
 			<div id='sidebar-links' class='mt-14 mx-auto flex flex-col gap-8 text-center'>
 				{#each paths2 as {name, href}}
-				<div>
-					<a {href}
-						class='mx-auto text-3xl text-tw-gray-100 hover:text-white'
-					>
-						{name}
-					</a>
-					<div class='invisible hover:visible h-[1px] w-7/8 mt-2 bg-white'></div>
-				</div>
-					
+				<a {href}
+					onclick={() => sidebarOpen = false}
+					class='mx-auto text-3xl text-tw-gray-100 hover:text-white'
+				>
+					{name}
+				</a>
 				{/each}
 			</div>
 		</div>
