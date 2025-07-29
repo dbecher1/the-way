@@ -7,7 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     id="canvas"
     viewBox="696.191 528.443 1131.063 382.406"
-    class='stroke-tw-orange fill-black/0 stroke-11 -mt-3 md:-mt-8 mx-auto drop-shadow-md drop-shadow-black w-[230px] md:w-[450px]'
+    class='stroke-secondary fill-black/0 stroke-11 -mt-3 md:-mt-8 mx-auto drop-shadow-md drop-shadow-neutral w-[230px] md:w-[450px]'
 >
     {#if show}
     <path

@@ -3,8 +3,7 @@
     import { cubicIn } from 'svelte/easing';
     import ChurchSVG from '$lib/svg/church.svelte';
     import PursueSVG from '$lib/svg/pursue.svelte';
-    import intersection from '$lib/actions/intersection';
-    import makevisible from '$lib/actions/makevisible';
+    import {Clock, Icon} from 'svelte-hero-icons';
 
     const noTransitions = true;
     const useSvg = true;
@@ -26,18 +25,37 @@
         easing: cubicIn
     };
 
-    let intersecting = $state(false);
+    const carouselContents = [
+        {
+            src: '/img/community-1.jpg',
+            contentText: 'Our DNA',
+            buttonText: 'Learn More',
+            href: '/about'
+        },
+        {
+            src: '/img/building-1.jpg',
+            contentText: 'Support Us',
+            buttonText: 'Give Today',
+            href: '/give'
+        },
+        {
+            src: '/img/prayer-1.jpg',
+            contentText: 'Need Prayer?',
+            buttonText: "Okay",
+            href: '/about'
+        },
+        {
+            src: '/img/preaching-1.jpg',
+            contentText: 'Dive Into the Word',
+            buttonText: 'Watch Now',
+            href: '/watch'
+        },
+    ]
 </script>
 
 <svelte:head>
     <title>The Way - Home</title>
 </svelte:head>
-
-<div
-	id='bg'
-	class="bg-[url(/img/the-way-bg1.jpg)] w-full h-full bg-center bg-no-repeat bg-local absolute -top-30 left-0 -z-50 bg-cover blur-[4px] brightness-50 contrast-125 opacity-75"
->
-</div>
 
 {#snippet fancy_text(text: string)}
     <span
@@ -52,7 +70,7 @@
     <ChurchSVG show={showText2} onIntroEnd={() => showText3 = true}/>
     {:else}
         {#if showText1}
-        <span class='text-tw-blue-100 -ml-10'>
+        <span class='text-primary -ml-10'>
         {@render fancy_text('Church')}
         </span>
         {/if}
@@ -64,26 +82,21 @@
     <PursueSVG show={showText4}/>
     {:else}
         {#if showText4}
-        <div class='text-tw-orange -mt-15' in:fade={textTransition}>
+        <div class='text-secondary -mt-15' in:fade={textTransition}>
             {@render fancy_text('pursue')}
         </div>
         {/if}
     {/if}
 {/snippet}
 
-{#snippet home_info_button(id: string, href: string, text: string)}
-    <a
-        {href}
-        {id}
-        class='hover:bg-tw-blue-100 bg-tw-blue-200 text-xl py-1 px-4 rounded-xl text-shadow-none text-gray-300 hover:text-gray-400 font-semibold tracking-tight hover:shadow-md shadow-sm hover:scale-105 border-2 border-black/40'
+<div id='bg'
+	class="bg-[url(/img/the-way-bg1.jpg)] w-dvw h-full bg-center bg-no-repeat bg-local absolute -top-30 left-0 -z-50 bg-cover blur-[4px] brightness-50 contrast-125"
     >
-        <span class='scale-100'>{text}</span>
-    </a>
-{/snippet}
+</div>
 
 <div class='h-fit flex flex-col'>
 
-    <div id='logo' class='mx-auto mt-32 md:mt-50 mb-30 uppercase text-gray-100 text-5xl md:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
+    <div id='logo' class='mx-auto my-24 md:my-32 mb-30 uppercase text-gray-100 text-5xl md:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
 
         {#if showText1}
         <div
@@ -114,55 +127,53 @@
         {/if}
     </div>
 
-    <div id='home-info-mobile'
-        class='md:hidden bg-white w-7/8 h-full'
-    >
-
-    </div>
-
-    <div id='home-info-web'
-        class='hidden flex mx-auto w-5/8 text-gray-50 text-shadow-md text-shadow-tw-black text-4xl justify-between'
-        use:intersection={{
-            cb: () => intersecting = true
-        }} 
-    >
-        
-        <div class='my-auto flex flex-col gap-8 invisible' use:makevisible={{show: intersecting, slide: 'Left', noTransitions}}>
-            <div
-                id='home-info-addr-service-times'
-                class='text-center flex flex-col gap-7'
-            >
-                <div>
-                    <div class='font-script text-8xl -mb-7 text-tw-orange'>
-                        Join us at
-                    </div>
-                    <div id='home-info-service-times'>
-                        Sunday mornings at 10:30AM
-                    </div>
-                </div>
-                <div id='home-info-addr'>
-                    <div>
-                        3704 Benson Road
-                    </div>
-                    <div>
-                        Garner, NC, 27529
-                    </div>
-                </div>
-            </div>
-            <div id='home-info-btns' class='flex justify-evenly'>
-                {@render home_info_button('plan-visit-btn', '/', 'Plan Your Visit')}
-                {@render home_info_button('watch-btn', '/watch', 'Watch Now')}
+    <div class='bg-base-100 text-base-content text-center w-dvw'>
+        <div class='prose mx-auto px-8 pb-12 pt-6'>
+            <h1 class='text-accent p-3'>Welcome to The Way!</h1>
+            <div>
+                We’re here to help people find their way to God, grow in their faith, and make a real difference in the world.
+                At The Way, we’re all about truthful, scripturally sound preaching, worship, and supporting one another, and our community, through prayer and service.
+                Whether you’re new to church or have been around for a while, there’s a place for you here. Join us as we step into this new chapter, with a vision to bring hope and light to our community.
             </div>
         </div>
-        
-        <div class='w-lg opacity-0 invisible' use:makevisible={{show: intersecting, slide: 'Right', noTransitions}}>
-            <img
-                src='/img/the-way-home-1.jpg'
-                alt='Join us today'
-                class='object-scale-down mask-x-from-80% mask-x-to-100% mask-y-from-80% mask-y-to-95% mask-radial-from-60% mask-radial-to-95%'
-            />
-        </div>
-        
     </div>
-    
+    <!--
+    prose heading style
+    font-weight: 800;
+    font-size: 2.25em;
+    margin-top: 0;
+    margin-bottom: 0.8888889em;
+    line-height: 1.1111111;
+    roughly these tailwind classes:
+    font-extrabold text-4xl mb-3.5 mt-0
+    -->
+    <div class='bg-primary'>
+        <div class='mx-auto px-8 py-12 grid grid-cols-3 text-primary-content text-xl font-semibold gap-4'>
+            <div class='font-extrabold text-4xl mb-3.5 mt-0 col-span-2 text-center'>
+                Ministries and Services
+            </div>
+            <div class='col-start-3 row-start-2 text-sec'>
+                Sunday Mornings<br>
+                <Icon src={Clock} class='size-6 inline my-auto'/>
+                <span class='text-lg'>10:30AM</span>
+            </div>
+            <div class='col-start-3 row-start-3'>
+                Wednesday Evenings<br>
+                <Icon src={Clock} class='size-6 inline my-auto'/>
+                <span class='text-lg'>6PM</span>
+            </div>
+        </div>
+    </div>
+
+    <div class='carousel text-neutral-content text-center text-4xl font-bold text-shadow-sm'>
+        {#each carouselContents as {src, contentText, buttonText, href}}
+        <div class='carousel-item w-100 relative'>
+            <img {src} alt={contentText} class='brightness-50'/>
+            <h1 class='absolute left-1/2 top-1/2 translate-[-50%]'>
+                {contentText}
+            </h1>
+            <a {href} class='btn btn-primary btn-lg absolute bottom-0 left-1/2 translate-[-50%]'>{buttonText}</a>
+        </div>
+        {/each}
+    </div>
 </div>

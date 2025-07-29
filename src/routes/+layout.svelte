@@ -3,6 +3,8 @@
 	import { fade, scale } from 'svelte/transition';
 	import { Icon, Bars3, XMark } from 'svelte-hero-icons';
 	import { slide } from 'svelte/transition';
+	import Instagram from '$lib/svg/instagram.svelte';
+	import Facebook from '$lib/svg/facebook.svelte';
 
 	let { children } = $props();
 
@@ -23,7 +25,7 @@
 
 {#snippet logo_link()}
 	<a href='/'
-		class='size-38 md:size-48 h-16 md:h-20 my-auto ml-7 md:ml-10 mt-2 px-1 hover:bg-black/10 rounded-sm'>
+		class='size-38 md:size-48 h-16 md:h-20 my-auto ml-7 md:ml-10 mt-2 px-1 hover:bg-neutral/10 rounded-sm'>
 		<img src='/img/logo-title.png'
 			class=''
 			alt={'The Way'}
@@ -31,44 +33,30 @@
 	</a>
 {/snippet}
 
-{#snippet dropdown_menu()}
-<div
-	role='navigation'
-	transition:fade={{duration: 150}}
-	onmouseleave={() => aboutOpen = false}
-	class='absolute bg-white text-black w-parent flex flex-col rounded-md top-13 left-0.5 overflow-hidden gap-0 drop-shadow-sm'
->
-	{#each paths1 as {name, href}}
-		<div class='hover:bg-tw-gray-100 py-2'>
-			<a {href} class='px-4 mx-1' >
-				{name}
-			</a>
-		</div>
-	{/each}
-</div>
-{/snippet}
-
 {#snippet title_button(text: string, href: string)}
-	<a {href} class='my-auto px-4 py-3 text-white hover:text-tw-gray-100 hover:bg-black/5 rounded-md'>
+	<a {href} class='my-auto btn btn-primary btn-ghost text-primary-content'>
 		{text}
 	</a>
 {/snippet}
 
-{#snippet parent_button(name: string)}
-	<button
-		onmousedown={() => aboutOpen = !aboutOpen}
-		class='my-auto px-4 py-3 text-white hover:text-tw-gray-100 hover:bg-black/5 rounded-md relative'
-	>
+{#snippet dropdown_button(name: string)}
+<details class='dropdown my-auto'>
+	<summary class=' btn btn-primary btn-ghost text-primary-content'>
 		{name}
-		{#if aboutOpen}
-			{@render dropdown_menu()}
-		{/if}
-	</button>
+	</summary>
+	<ul class='menu dropdown-content bg-base-100 rounded-box z-1 p-2 shadow-sm'>
+		{#each paths1 as {name, href}}
+			<li>
+				<a {href}>{name}</a>
+			</li>
+		{/each}
+	</ul>	
+</details>
 {/snippet}
 
 {#snippet sidebar()}
 	<div id='sidebar'
-		class='md:hidden w-full h-full fixed bg-tw-blue-200 flex flex-col z-50'
+		class='md:hidden w-full h-full fixed bg-primary flex flex-col z-50'
 		transition:slide={{axis: 'x'}}
 	>
 		<div id='sidebar-header' class='flex justify-between relative w-full mt-2 h-fit'>
@@ -78,9 +66,9 @@
 			/>
 
 			<button id='sidebar-close-btn' onclick={() => sidebarOpen = false}
-				class='absolute right-0 inset-y-0 size-9 mr-5 my-auto cursor-pointer hover:bg-tw-gray-400/50 rounded-sm'
+				class='absolute right-0 inset-y-0 size-10 mr-5 my-auto btn btn-primary btn-ghost btn-square p-1'
 			>
-				<Icon src={XMark} class='stroke-white'/>
+				<Icon src={XMark} class='stroke-primary-content'/>
 			</button>
 		</div>
 		<div id='sidebar-body' class='flex h-full'>
@@ -88,7 +76,7 @@
 				{#each paths2 as {name, href}}
 				<a {href}
 					onclick={() => sidebarOpen = false}
-					class='mx-auto text-3xl text-tw-gray-100 hover:text-white'
+					class='mx-auto text-3xl text-primary-content hover:text-primary-content/70'
 				>
 					{name}
 				</a>
@@ -104,23 +92,23 @@
 
 <main class='flex-1'>
 
-<nav id='tw-header-bar' class='flex w-full justify-between content-center bg-tw-blue-100/80'>
+<nav id='tw-header-bar' class='flex w-full justify-between content-center bg-primary'>
 	{@render logo_link()}
-	<div class='not-md:hidden flex justify-around lg:gap-8 mr-10 lg:text-lg font-semibold flex-1 max-w-1/2'>
-		{@render parent_button('Learn More')}
+	<div class='flex-1'></div>
+	<div class='not-md:hidden flex justify-around mr-8'>
+		{@render dropdown_button('Learn More')}
 		{@render title_button('Watch', '/watch')}
 		{@render title_button('Contact Us', '/contact')}
 			<a href='/give'
-			class='bg-tw-orange h-7 lg:h-8 text-lg lg:text-xl px-4 my-auto
-			rounded-md text-white hover:text-tw-gray-100 hover:drop-shadow-sm hover:scale-105 hover:bg-tw-orange'>
+			class='my-auto btn btn-secondary ml-2'>
 			Give
 		</a>
 	</div>
 
 	<button onclick={() => sidebarOpen = true}
-		class='md:hidden mr-7 size-12 cursor-pointer p-2 my-auto hover:bg-tw-gray-400/50 rounded-sm'
+		class='md:hidden mr-7 my-auto btn btn-primary btn-ghost btn-square p-2 size-12'
 	>
-		<Icon src={Bars3} class='stroke-tw-gray-100'/>
+		<Icon src={Bars3} class='stroke-primary-content'/>
 	</button>
 </nav>
 
@@ -128,31 +116,35 @@
 
 </main>
 
-<footer id='tw-footer' class='w-full h-fit bg-tw-blue-100'>
-	<div class='md:px-24 px-8 py-8 flex flex-col content-between text-sm md:text-lg text-white text-shadow-sm text-shadow-black/10 gap-10'>
-		<div class='flex justify-between flex-1 flex-wrap gap-4'>
-			<div>
-				<div>The Way</div>
-				<div class='-mb-1'>3704 Benson Road</div>
-				<div>Garner, NC, 27529</div>
-			</div>
-			<div class='not-md:text-right'>
-				<div>Phone: 919.722.0761</div>
-				<div>
-					Email: 
-					<a href='mailto:info@the-way.church'>
-						info@the-way.church
-					</a>
-				</div>
-			</div>
-			<div>
-				<div>
-					Socials: TODO
-				</div>
-			</div>
-		</div>
-		<div class='md:text-sm text-[8pt] '>
-			&copy; 2025 The Way. All Rights Reserved.
+<footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+	<div>
+		<h6 class='footer-title'>The Way</h6>
+		<div class='link link-hover'>
+			3704 Benson Road
+			<br>
+			Garner, NC, 27529
 		</div>
 	</div>
+	<nav>
+		<h6 class='footer-title'>Contact Us</h6>
+		<div>Phone: 919.722.0761</div>
+		<a href='mailto:info@the-way.chuch' class='link link-hover'>
+			info@the-way.church
+		</a>
+	</nav>
+	<nav>
+		<h6 class='footer-title'>Socials</h6>
+		<div class='flex gap-4'>
+			<a href='/' class=''>
+				<Facebook class='size-8 fill-white hover:fill-gray-200'/>
+			</a>
+			<a href='/' class=''>
+				<Instagram class='size-8 fill-white hover:fill-gray-200'/>
+			</a>
+		</div>
+	</nav>
+	
+</footer>
+<footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+	&copy; 2025 The Way. All Rights Reserved.
 </footer>
