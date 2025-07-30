@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.css';
-	import { fade, scale } from 'svelte/transition';
 	import { Icon, Bars3, XMark } from 'svelte-hero-icons';
 	import { slide } from 'svelte/transition';
 	import Instagram from '$lib/svg/instagram.svelte';
@@ -8,18 +7,13 @@
 
 	let { children } = $props();
 
-	let aboutOpen = $state(false);
 	let sidebarOpen = $state(false);
 
-	const paths1 = [
-		{name: 'About Us', href: '/about'},
-		{name: 'Ministries', href: '/ministries'}
-	];
-	const paths2 = [
-		{name: 'Home', href:'/'},
-		{name: 'Watch', href:'/watch'},
-		{name: 'Give', href:'/give'},
-		...paths1
+	const paths = [
+		{text: 'About Us', href: '/'},
+		{text: 'Ministries', href: '/'},
+		{text: 'Watch', href:'/'},
+		{text: 'Give', href:'/'},
 	];
 </script>
 
@@ -34,24 +28,11 @@
 {/snippet}
 
 {#snippet title_button(text: string, href: string)}
-	<a {href} class='my-auto btn btn-primary btn-ghost text-primary-content'>
-		{text}
-	</a>
-{/snippet}
-
-{#snippet dropdown_button(name: string)}
-<details class='dropdown my-auto'>
-	<summary class=' btn btn-primary btn-ghost text-primary-content'>
-		{name}
-	</summary>
-	<ul class='menu dropdown-content bg-base-100 rounded-box z-1 p-2 shadow-sm'>
-		{#each paths1 as {name, href}}
-			<li>
-				<a {href}>{name}</a>
-			</li>
-		{/each}
-	</ul>	
-</details>
+	{#if text == 'Give'}
+		<a {href} class='my-auto btn btn-secondary ml-2'>{text}</a>
+	{:else}
+		<a {href} class='my-auto btn btn-primary btn-ghost text-primary-content'>{text}</a>
+	{/if}
 {/snippet}
 
 {#snippet sidebar()}
@@ -73,12 +54,12 @@
 		</div>
 		<div id='sidebar-body' class='flex h-full'>
 			<div id='sidebar-links' class='mt-14 mx-auto flex flex-col gap-8 text-center'>
-				{#each paths2 as {name, href}}
+				{#each [{text: 'Home', href: '/'}, ...paths] as {text, href}}
 				<a {href}
 					onclick={() => sidebarOpen = false}
 					class='mx-auto text-3xl text-primary-content hover:text-primary-content/70'
 				>
-					{name}
+					{text}
 				</a>
 				{/each}
 			</div>
@@ -90,61 +71,74 @@
 	{@render sidebar()}
 {/if}
 
-<main class='flex-1'>
-
+{#snippet navbar()}
 <nav id='tw-header-bar' class='flex w-full justify-between content-center bg-primary'>
 	{@render logo_link()}
 	<div class='flex-1'></div>
 	<div class='not-md:hidden flex justify-around mr-8'>
-		{@render dropdown_button('Learn More')}
-		{@render title_button('Watch', '/watch')}
-		{@render title_button('Contact Us', '/contact')}
-			<a href='/give'
-			class='my-auto btn btn-secondary ml-2'>
-			Give
-		</a>
+		{#each paths as {text, href}}
+			{@render title_button(text, href)}
+		{/each}
 	</div>
-
 	<button onclick={() => sidebarOpen = true}
 		class='md:hidden mr-7 my-auto btn btn-primary btn-ghost btn-square p-2 size-12'
 	>
 		<Icon src={Bars3} class='stroke-primary-content'/>
 	</button>
 </nav>
+{/snippet}
 
-{@render children()}
-
-</main>
-
-<footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-	<div>
-		<h6 class='footer-title'>The Way</h6>
-		<div class='link link-hover'>
-			3704 Benson Road
-			<br>
-			Garner, NC, 27529
+{#snippet footer()}
+<div class='bg-neutral text-neutral-content'>
+	<div class="footer sm:footer-horizontal p-10">
+		<div>
+			<h6 class='footer-title'>The Way</h6>
+			<div class='link link-hover'>
+				3704 Benson Road
+				<br>
+				Garner, NC, 27529
+			</div>
 		</div>
+		<nav>
+			<h6 class='footer-title'>Contact Us</h6>
+			<div>Phone: 919.722.0761</div>
+			<a href='mailto:info@the-way.chuch' class='link link-hover'>
+				info@the-way.church
+			</a>
+		</nav>
+		<nav>
+			<h6 class='footer-title'>Socials</h6>
+			<div class='flex gap-4'>
+				<a href='/' class=''>
+					<Facebook class='size-8 fill-white hover:fill-gray-200'/>
+				</a>
+				<a href='/' class=''>
+					<Instagram class='size-8 fill-white hover:fill-gray-200'/>
+				</a>
+			</div>
+		</nav>
 	</div>
-	<nav>
-		<h6 class='footer-title'>Contact Us</h6>
-		<div>Phone: 919.722.0761</div>
-		<a href='mailto:info@the-way.chuch' class='link link-hover'>
-			info@the-way.church
-		</a>
-	</nav>
-	<nav>
-		<h6 class='footer-title'>Socials</h6>
-		<div class='flex gap-4'>
-			<a href='/' class=''>
-				<Facebook class='size-8 fill-white hover:fill-gray-200'/>
-			</a>
-			<a href='/' class=''>
-				<Instagram class='size-8 fill-white hover:fill-gray-200'/>
-			</a>
-		</div>
-	</nav>
-	
+	<aside class="footer sm:footer-horizontal p-10">
+		&copy; 2025 The Way. All Rights Reserved.
+	</aside>
+</div>
+{/snippet}
+
+<div class='fixed inset-0 w-dvw bg-[url("/img/bg-mask.jpg")] bg-fixed brightness-25 bg-center bg-cover mix-blend-multiply opacity-90'>
+
+</div>
+
+<!-- CONTENTS HERE -->
+<div class='w-full max-w-[100rem] min-w-sm mx-auto flex flex-col flex-1 z-1'>
+<header>
+	{@render navbar()}
+</header>
+<main class='flex-1'>
+	{@render children()}
+</main>
+<footer>
+	{@render footer()}
 </footer>
-<footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-	&copy; 2025 The Way. All Rights Reserved.
-</footer>
+
+</div>
+

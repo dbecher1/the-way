@@ -41,7 +41,7 @@
         {
             src: '/img/prayer-1.jpg',
             contentText: 'Need Prayer?',
-            buttonText: "Okay",
+            buttonText: "Reach Out",
             href: '/about'
         },
         {
@@ -89,15 +89,40 @@
     {/if}
 {/snippet}
 
-<div id='bg'
-	class="bg-[url(/img/the-way-bg1.jpg)] w-dvw h-full bg-center bg-no-repeat bg-local absolute -top-30 left-0 -z-50 bg-cover blur-[4px] brightness-50 contrast-125"
-    >
+{#snippet carousel()}
+<div class='carousel text-neutral-content text-center text-4xl font-bold w-6xl p-4 bg-neutral space-x-4 mx-auto'>
+    {#each carouselContents as {src, contentText, buttonText, href}, i}
+    <div id={`slide${i}`} class='carousel-item h-100 w-lg relative rounded-box'>
+        
+        <img {src} alt={contentText} class='brightness-50 mx-auto object-center object-cover'/>
+        <h1 class='absolute left-1/2 top-1/2 translate-[-50%] text-shadow-sm'>
+            {contentText}
+        </h1>
+        <a {href} class='btn btn-primary btn-lg absolute bottom-0 left-1/2 translate-[-50%]'>{buttonText}</a>
+        <!--
+        TODO: implement buttons for carousel
+        <div class=' shadow-none w-full '>
+            {#if i - 1 >= 0}
+            <a href={`#slide${i - 1}`} class='absolute top-1/2 -translate-y-1/2 transform btn btn-circle btn-neutral left-10'>{'<'}</a>
+            {/if}
+            {#if i + 1 < carouselContents.length}
+            <a href={`#slide${i + 1}`} class='absolute top-1/2 -translate-y-1/2 transform btn btn-circle btn-neutral right-10 '>{'>'}</a>
+            {/if}
+        </div>
+        -->
+        
+    </div>
+    {/each}
 </div>
+{/snippet}
 
 <div class='h-fit flex flex-col'>
 
-    <div id='logo' class='mx-auto my-24 md:my-32 mb-30 uppercase text-gray-100 text-5xl md:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
-
+    <div class='overflow-x-clip relative'>
+        <img src='/img/the-way-bg1.jpg' alt='The Way' class="w-screen object-cover absolute top-0 left-1/2 -translate-x-1/2 -translate-y-16/50 -z-1 blur-[4px] brightness-50 contrast-125"/>
+    </div>
+    <div id='logo' class='mx-auto w-full my-24 md:my-32 mb-30 uppercase text-gray-100 text-5xl md:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
+        
         {#if showText1}
         <div
             in:fade={textTransition}
@@ -127,12 +152,12 @@
         {/if}
     </div>
 
-    <div class='bg-base-100 text-base-content text-center w-dvw'>
+    <div class='bg-base-100 text-base-content text-center w-full'>
         <div class='prose mx-auto px-8 pb-12 pt-6'>
-            <h1 class='text-accent p-3'>Welcome to The Way!</h1>
+            <h1 class='text-secondary text-shadow-neutral text-shadow-sm/20 p-3'>Welcome to The Way!</h1>
             <div>
-                We’re here to help people find their way to God, grow in their faith, and make a real difference in the world.
-                At The Way, we’re all about truthful, scripturally sound preaching, worship, and supporting one another, and our community, through prayer and service.
+                We’re here to help people find their way to God, grow in their faith, and make a real difference in the world.<br>
+                At The Way, we’re all about truthful, scripturally sound preaching, worship, and supporting one another, and our community, through prayer and service.<br>
                 Whether you’re new to church or have been around for a while, there’s a place for you here. Join us as we step into this new chapter, with a vision to bring hope and light to our community.
             </div>
         </div>
@@ -148,32 +173,31 @@
     font-extrabold text-4xl mb-3.5 mt-0
     -->
     <div class='bg-primary'>
-        <div class='mx-auto px-8 py-12 grid grid-cols-3 text-primary-content text-xl font-semibold gap-4'>
-            <div class='font-extrabold text-4xl mb-3.5 mt-0 col-span-2 text-center'>
+        <div class='mx-auto px-24 md:px-8 py-12 grid grid-cols-3 text-primary-content text-xl font-semibold gap-4'>
+            <div class='font-extrabold text-4xl mb-3.5 mt-0 col-start-1 col-span-3 text-center'>
                 Ministries and Services
             </div>
-            <div class='col-start-3 row-start-2 text-sec'>
+            <!--
+            <div class='row-start-2 col-start-1 col-span-2 row-span-2 mx-auto'>
+                {@render carousel()}
+            </div>
+            -->
+            <div class='not-md:hidden row-start-2 col-start-1 col-span-2 row-span-4 mx-auto h-72 w-128 overflow-hidden rounded-box'>
+                <img src='/img/sunday-service.jpg' alt='Sunday Service' class='object-none -translate-y-40  brightness-75 '/>
+            </div>
+            <div class='col-start-1 md:col-start-3 row-start-2 md:row-start-3 text-sec'>
                 Sunday Mornings<br>
                 <Icon src={Clock} class='size-6 inline my-auto'/>
                 <span class='text-lg'>10:30AM</span>
             </div>
-            <div class='col-start-3 row-start-3'>
+            <div class='col-start-3 row-start-2 md:row-start-4'>
                 Wednesday Evenings<br>
                 <Icon src={Clock} class='size-6 inline my-auto'/>
                 <span class='text-lg'>6PM</span>
             </div>
         </div>
     </div>
-
-    <div class='carousel text-neutral-content text-center text-4xl font-bold text-shadow-sm'>
-        {#each carouselContents as {src, contentText, buttonText, href}}
-        <div class='carousel-item w-100 relative'>
-            <img {src} alt={contentText} class='brightness-50'/>
-            <h1 class='absolute left-1/2 top-1/2 translate-[-50%]'>
-                {contentText}
-            </h1>
-            <a {href} class='btn btn-primary btn-lg absolute bottom-0 left-1/2 translate-[-50%]'>{buttonText}</a>
-        </div>
-        {/each}
+    <div class='bg-base-300 w-full flex'>
+        {@render carousel()}
     </div>
 </div>

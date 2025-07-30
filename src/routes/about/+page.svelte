@@ -31,12 +31,12 @@
     </div>
 </div>
 
-<div class='w-dvw bg-base-100 text-base-content pb-12'>
-    <div class='prose text-center mx-auto md:p-0 px-12'>
-        <div>
-            <h2 class='mb-2'>UNAPOLOGETIC PREACHING</h2>
-            <h4>2 Tim 4:2, 1 Corinthians 2:1-2</h4>
-        </div>
+<div class='w-full bg-base-100 text-base-content pb-12'>
+    <div class='text-center mx-auto md:p-0 px-12'>
+    <div>
+        <h2 class='mb-2'>UNAPOLOGETIC PREACHING</h2>
+        <h4>2 Tim 4:2, 1 Corinthians 2:1-2</h4>
+    </div>
 
     We will fearlessly proclaim the truth about God and His Gospel by preaching the Scriptures in context, with a dependence on the Holy Spirit to bring eternal life change. We will accomplish this through exposition that has a robust focus on application.
 
