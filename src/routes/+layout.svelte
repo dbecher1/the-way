@@ -124,21 +124,19 @@
 </div>
 {/snippet}
 
-<div class='fixed inset-0 w-dvw bg-[url("/img/bg-mask.jpg")] bg-fixed brightness-25 bg-center bg-cover mix-blend-multiply opacity-90'>
+<!-- CONTENTS HERE -->
+ <div class='fixed inset-0 w-dvw bg-[url("/img/bg-mask-scaled.png")] bg-fixed brightness-25 bg-center bg-cover mix-blend-multiply opacity-90'>
 
 </div>
-
-<!-- CONTENTS HERE -->
 <div class='w-full max-w-[100rem] min-w-sm mx-auto flex flex-col flex-1 z-1'>
-<header>
-	{@render navbar()}
-</header>
-<main class='flex-1'>
-	{@render children()}
-</main>
-<footer>
-	{@render footer()}
-</footer>
-
+	<header>
+		{@render navbar()}
+	</header>
+	<main class='flex-1'>
+		{@render children()}
+	</main>
+	<footer>
+		{@render footer()}
+	</footer>
 </div>
 
