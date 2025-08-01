@@ -150,6 +150,10 @@
             {@render pursue()}
         </div>  
         {/if}
+        <div class='grid grid-cols-2 mx-auto gap-12'>
+            <a href='/' class='btn btn-outline btn-primary btn-xl btn-wide ml-auto'>Learn More</a>
+            <a href='/' class='btn btn-outline btn-secondary btn-xl btn-wide mr-auto'>Give</a>
+        </div>
     </div>
 
     <div class='bg-base-100 text-base-content text-center w-full'>
