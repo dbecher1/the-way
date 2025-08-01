@@ -92,7 +92,7 @@
 {#snippet carousel()}
 <div class='carousel text-neutral-content text-center text-4xl font-bold w-6xl p-4 bg-neutral space-x-4 mx-auto'>
     {#each carouselContents as {src, contentText, buttonText, href}, i}
-    <div id={`slide${i}`} class='carousel-item h-100 w-lg relative rounded-box'>
+    <div id={`slide${i}`} class='carousel-item h-100 w-sm md:w-lg relative rounded-box'>
         
         <img {src} alt={contentText} class='brightness-50 mx-auto object-center object-cover'/>
         <h1 class='absolute left-1/2 top-1/2 translate-[-50%] text-shadow-sm'>
@@ -173,7 +173,7 @@
     font-extrabold text-4xl mb-3.5 mt-0
     -->
     <div class='bg-primary'>
-        <div class='mx-auto px-24 md:px-8 py-12 grid grid-cols-3 text-primary-content text-xl font-semibold gap-4'>
+        <div class='mx-auto px-24 md:px-8 pt-12 grid grid-cols-3 text-primary-content text-xl font-semibold gap-4'>
             <div class='font-extrabold text-4xl mb-3.5 mt-0 col-start-1 col-span-3 text-center'>
                 Ministries and Services
             </div>
@@ -182,10 +182,10 @@
                 {@render carousel()}
             </div>
             -->
-            <div class='not-md:hidden row-start-2 col-start-1 col-span-2 row-span-4 mx-auto h-72 w-128 overflow-hidden rounded-box'>
-                <img src='/img/sunday-service.jpg' alt='Sunday Service' class='object-none -translate-y-40  brightness-75 '/>
+            <div class='not-md:hidden row-start-2 col-start-1 col-span-2 row-span-6 mx-auto w-168 overflow-hidden'>
+                <img src='/img/sunday-service.jpg' alt='Sunday Service' class='hidden object-none -translate-y-40  brightness-75 '/>
             </div>
-            <div class='col-start-1 md:col-start-3 row-start-2 md:row-start-3 text-sec'>
+            <div class='col-start-1 md:col-start-3 row-start-2 md:row-start-3'>
                 Sunday Mornings<br>
                 <Icon src={Clock} class='size-6 inline my-auto'/>
                 <span class='text-lg'>10:30AM</span>
