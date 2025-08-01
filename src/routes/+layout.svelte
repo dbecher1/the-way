@@ -10,9 +10,9 @@
 	let sidebarOpen = $state(false);
 
 	const paths = [
-		{text: 'About Us', href: '/'},
+/* 		{text: 'About Us', href: '/'},
 		{text: 'Ministries', href: '/'},
-		{text: 'Watch', href:'/'},
+		{text: 'Watch', href:'/'}, */
 		{text: 'Give', href:'/'},
 	];
 </script>

@@ -173,8 +173,8 @@
     font-extrabold text-4xl mb-3.5 mt-0
     -->
     <div class='bg-primary'>
-        <div class='mx-auto px-24 md:px-8 pt-12 grid grid-cols-3 text-primary-content text-xl font-semibold gap-4'>
-            <div class='font-extrabold text-4xl mb-3.5 mt-0 col-start-1 col-span-3 text-center'>
+        <div class='mx-auto px-24 md:px-8 pt-12 grid grid-cols-5 text-primary-content text-xl font-semibold gap-4'>
+            <div class='font-extrabold text-4xl mb-5 mt-0 col-span-5 text-center'>
                 Ministries and Services
             </div>
             <!--
@@ -185,19 +185,19 @@
             <div class='not-md:hidden row-start-2 col-start-1 col-span-2 row-span-6 mx-auto w-168 overflow-hidden'>
                 <img src='/img/sunday-service.jpg' alt='Sunday Service' class='hidden object-none -translate-y-40  brightness-75 '/>
             </div>
-            <div class='col-start-1 md:col-start-3 row-start-2 md:row-start-3'>
+            <div class='col-start-2 row-start-2 text-center'>
                 Sunday Mornings<br>
                 <Icon src={Clock} class='size-6 inline my-auto'/>
                 <span class='text-lg'>10:30AM</span>
             </div>
-            <div class='col-start-3 row-start-2 md:row-start-4'>
+            <div class='col-start-4 row-start-2 text-center'>
                 Wednesday Evenings<br>
                 <Icon src={Clock} class='size-6 inline my-auto'/>
                 <span class='text-lg'>6PM</span>
             </div>
         </div>
     </div>
-    <div class='bg-base-300 w-full flex'>
+    <!-- <div class='bg-base-300 w-full flex'>
         {@render carousel()}
-    </div>
+    </div> -->
 </div>
