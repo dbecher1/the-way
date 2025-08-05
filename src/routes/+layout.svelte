@@ -29,7 +29,7 @@
 
 {#snippet title_button(text: string, href: string)}
 	{#if text == 'Give'}
-		<a {href} class='my-auto btn btn-secondary ml-2'>{text}</a>
+		<a {href} class='my-auto btn btn-secondary not-md:btn-sm ml-2'>{text}</a>
 	{:else}
 		<a {href} class='my-auto btn btn-primary btn-ghost text-primary-content'>{text}</a>
 	{/if}
@@ -75,22 +75,18 @@
 <nav id='tw-header-bar' class='flex w-full justify-between content-center bg-primary'>
 	{@render logo_link()}
 	<div class='flex-1'></div>
-	<div class='not-md:hidden flex justify-around mr-8'>
+	<div class='flex justify-around mr-8'>
 		{#each paths as {text, href}}
 			{@render title_button(text, href)}
 		{/each}
 	</div>
-	<button onclick={() => sidebarOpen = true}
-		class='md:hidden mr-7 my-auto btn btn-primary btn-ghost btn-square p-2 size-12'
-	>
-		<Icon src={Bars3} class='stroke-primary-content'/>
-	</button>
+
 </nav>
 {/snippet}
 
 {#snippet footer()}
 <div class='bg-neutral text-neutral-content'>
-	<div class="footer sm:footer-horizontal p-10">
+	<div class="footer sm:footer-horizontal p-6 md:p-10">
 		<div>
 			<h6 class='footer-title'>The Way</h6>
 			<div class='link link-hover'>
@@ -118,8 +114,9 @@
 			</div>
 		</nav>
 	</div>
-	<aside class="footer sm:footer-horizontal p-10">
-		&copy; 2025 The Way. All Rights Reserved.
+	<aside class="footer sm:footer-horizontal not-md:-mt-2 p-6 md:p-10">
+		&copy; 2025 The Way. All Rights Reserved.<br>
+		Website by Ministry Brands.
 	</aside>
 </div>
 {/snippet}

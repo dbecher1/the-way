@@ -51,6 +51,19 @@
             href: '/watch'
         },
     ]
+
+    const onclick = (e: Event)=> {
+        e.preventDefault();
+        const element = e.currentTarget as HTMLAnchorElement;
+        const id = new URL(element.href).hash.replace('#', '');
+        const targetElement = document.getElementById(id);
+        if (targetElement) {
+                window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            })
+        }
+    }
 </script>
 
 <svelte:head>
@@ -121,7 +134,7 @@
     <div class='overflow-x-clip relative'>
         <img src='/img/the-way-bg1.jpg' alt='The Way' class="w-screen object-cover absolute top-0 left-1/2 -translate-x-1/2 -translate-y-16/50 -z-1 blur-[4px] brightness-50 contrast-125"/>
     </div>
-    <div id='logo' class='mx-auto w-full my-24 md:my-32 mb-30 uppercase text-gray-100 text-5xl md:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
+    <div id='logo' class='mx-auto w-full my-8 md:my-32 uppercase text-gray-100 text-5xl md:text-6xl lg:text-8xl text-shadow-sm text-shadow-black/50 text-center tracking-tight'>
         
         {#if showText1}
         <div
@@ -150,16 +163,16 @@
             {@render pursue()}
         </div>  
         {/if}
-        <div class='grid grid-cols-2 mx-auto gap-12'>
-            <a href='/' class='btn btn-outline btn-primary btn-xl btn-wide ml-auto'>Learn More</a>
-            <a href='/' class='btn btn-outline btn-secondary btn-xl btn-wide mr-auto'>Give</a>
+        <div class='grid grid-cols-2 mx-auto gap-12 pt-2 px-10 lg:p-0'>
+            <a href='#learn-more' {onclick} class='md:max-w-50 btn btn-outline btn-primary md:btn-lg lg:btn-xl btn-wide ml-auto'>Learn More</a>
+            <a href='/' class='md:max-w-50 btn btn-outline btn-secondary md:btn-lg lg:btn-xl btn-wide mr-auto'>Give</a>
         </div>
     </div>
 
     <div class='bg-base-100 text-base-content text-center w-full'>
-        <div class='prose mx-auto px-8 pb-12 pt-6'>
-            <h1 class='text-secondary text-shadow-neutral text-shadow-sm/20 p-3'>Welcome to The Way!</h1>
-            <div>
+        <div class='lg:prose mx-auto px-8 pb-12 pt-6'>
+            <h1 class='not-md:text-2xl not-lg:text-3xl not-lg:font-semibold text-secondary lg:text-secondary text-shadow-neutral text-shadow-sm/20 p-3'>Welcome to The Way!</h1>
+            <div class='not-lg:text-base-content/85 not-lg:pt-4 not-lg:text-sm/5.5'>
                 We’re here to help people find their way to God, grow in their faith, and make a real difference in the world.<br>
                 At The Way, we’re all about truthful, scripturally sound preaching, worship, and supporting one another, and our community, through prayer and service.<br>
                 Whether you’re new to church or have been around for a while, there’s a place for you here. Join us as we step into this new chapter, with a vision to bring hope and light to our community.
@@ -176,9 +189,9 @@
     roughly these tailwind classes:
     font-extrabold text-4xl mb-3.5 mt-0
     -->
-    <div class='bg-primary'>
-        <div class='mx-auto px-24 md:px-8 pt-12 grid grid-cols-5 text-primary-content text-xl font-semibold gap-4'>
-            <div class='font-extrabold text-4xl mb-5 mt-0 col-span-5 text-center'>
+    <section id='learn-more' class='bg-primary'>
+        <div class='mx-auto not-md:pb-6 md:px-8 pt-6 md:pt-12 grid grid-cols-5 text-primary-content md:text-xl font-semibold gap-4'>
+            <div class='font-extrabold text-2xl md:text-4xl my-2 md:mb-5 md:mt-0 col-span-5 text-center'>
                 Ministries and Services
             </div>
             <!--
@@ -189,18 +202,18 @@
             <div class='not-md:hidden row-start-2 col-start-1 col-span-2 row-span-6 mx-auto w-168 overflow-hidden'>
                 <img src='/img/sunday-service.jpg' alt='Sunday Service' class='hidden object-none -translate-y-40  brightness-75 '/>
             </div>
-            <div class='col-start-2 row-start-2 text-center'>
-                Sunday Mornings<br>
-                <Icon src={Clock} class='size-6 inline my-auto'/>
-                <span class='text-lg'>10:30AM</span>
+            <div class='not-sm:col-span-5 sm:col-start-2 sm:row-start-2 text-center'>
+                Sunday Mornings<br class=''>
+                <Icon src={Clock} class='size-5 md:size-6 inline my-auto'/>
+                <span class='text-sm md:text-lg'>10:30AM</span>
             </div>
-            <div class='col-start-4 row-start-2 text-center'>
+            <div class='not-sm:col-span-5 sm:col-start-4 sm:row-start-2 text-center'>
                 Wednesday Evenings<br>
-                <Icon src={Clock} class='size-6 inline my-auto'/>
-                <span class='text-lg'>6PM</span>
+                <Icon src={Clock} class='size-5 md:size-6 inline my-auto'/>
+                <span class='text-sm md:text-lg'>6PM</span>
             </div>
         </div>
-    </div>
+    </section>
     <!-- <div class='bg-base-300 w-full flex'>
         {@render carousel()}
     </div> -->
