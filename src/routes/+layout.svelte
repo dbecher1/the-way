@@ -1,25 +1,18 @@
 <script lang="ts">
 	import '../app.css';
-	import { Icon, Bars3, XMark } from 'svelte-hero-icons';
-	import { slide } from 'svelte/transition';
 	import Instagram from '$lib/svg/instagram.svelte';
 	import Facebook from '$lib/svg/facebook.svelte';
 
 	let { children } = $props();
 
-	let sidebarOpen = $state(false);
-
 	const paths = [
-/* 		{text: 'About Us', href: '/'},
-		{text: 'Ministries', href: '/'},
-		{text: 'Watch', href:'/'}, */
 		{text: 'Give', href:'/'},
 	];
 </script>
 
 {#snippet logo_link()}
 	<a href='/'
-		class='size-38 md:size-48 h-16 md:h-20 my-auto ml-7 md:ml-10 mt-2 px-1 hover:bg-neutral/10 rounded-sm'>
+		class='size-30 sm:size-38 md:size-48 h-12 sm:h-16 md:h-20 my-auto mt-2 px-1 hover:bg-neutral/10 rounded-sm'>
 		<img src='/img/logo-title.png'
 			class=''
 			alt={'The Way'}
@@ -29,53 +22,17 @@
 
 {#snippet title_button(text: string, href: string)}
 	{#if text == 'Give'}
-		<a {href} class='my-auto btn btn-secondary not-md:btn-sm ml-2'>{text}</a>
+		<a {href} class='my-auto btn btn-secondary btn-sm lg:btn-md btn-wide mx-1 md:mx-4'>{text}</a>
 	{:else}
 		<a {href} class='my-auto btn btn-primary btn-ghost text-primary-content'>{text}</a>
 	{/if}
 {/snippet}
 
-{#snippet sidebar()}
-	<div id='sidebar'
-		class='md:hidden w-full h-full fixed bg-primary flex flex-col z-50'
-		transition:slide={{axis: 'x'}}
-	>
-		<div id='sidebar-header' class='flex justify-between relative w-full mt-2 h-fit'>
-			<img src='/img/logo-title.png'
-				class='h-18 mx-auto'
-				alt={'The Way'}
-			/>
-
-			<button id='sidebar-close-btn' onclick={() => sidebarOpen = false}
-				class='absolute right-0 inset-y-0 size-10 mr-5 my-auto btn btn-primary btn-ghost btn-square p-1'
-			>
-				<Icon src={XMark} class='stroke-primary-content'/>
-			</button>
-		</div>
-		<div id='sidebar-body' class='flex h-full'>
-			<div id='sidebar-links' class='mt-14 mx-auto flex flex-col gap-8 text-center'>
-				{#each [{text: 'Home', href: '/'}, ...paths] as {text, href}}
-				<a {href}
-					onclick={() => sidebarOpen = false}
-					class='mx-auto text-3xl text-primary-content hover:text-primary-content/70'
-				>
-					{text}
-				</a>
-				{/each}
-			</div>
-		</div>
-	</div>
-{/snippet}
-
-{#if sidebarOpen}
-	{@render sidebar()}
-{/if}
-
 {#snippet navbar()}
-<nav id='tw-header-bar' class='flex w-full justify-between content-center bg-primary'>
+<nav id='tw-header-bar' class='flex w-full justify-between content-center bg-primary px-6 sm:px-7 md:px-10 lg:px-13'>
 	{@render logo_link()}
 	<div class='flex-1'></div>
-	<div class='flex justify-around mr-8'>
+	<div class='flex justify-around'>
 		{#each paths as {text, href}}
 			{@render title_button(text, href)}
 		{/each}
@@ -86,7 +43,7 @@
 
 {#snippet footer()}
 <div class='bg-neutral text-neutral-content'>
-	<div class="footer sm:footer-horizontal p-6 md:p-10">
+	<div class="footer footer-horizontal not-md:text-[10pt] p-6 md:p-10">
 		<div>
 			<h6 class='footer-title'>The Way</h6>
 			<div class='link link-hover'>
@@ -98,9 +55,12 @@
 		<nav>
 			<h6 class='footer-title'>Contact Us</h6>
 			<div>Phone: 919.722.0761</div>
-			<a href='mailto:info@the-way.chuch' class='link link-hover'>
-				info@the-way.church
-			</a>
+			<div>
+				Email: 
+				<a href='mailto:info@the-way.chuch' class='link link-hover'>
+					info@the-way.church
+				</a>
+			</div>
 		</nav>
 		<nav>
 			<h6 class='footer-title'>Socials</h6>
@@ -114,9 +74,13 @@
 			</div>
 		</nav>
 	</div>
-	<aside class="footer sm:footer-horizontal not-md:-mt-2 p-6 md:p-10">
-		&copy; 2025 The Way. All Rights Reserved.<br>
-		Website by Ministry Brands.
+	<aside class="p-6 md:px-10 text-[8pt] sm:text-[10pt] space-y-1.5 sm:space-y-0">
+		<div>
+			&copy; 2025 The Way. All Rights Reserved.
+		</div>
+		<div>
+			Website by Ministry Brands.
+		</div>
 	</aside>
 </div>
 {/snippet}
@@ -125,7 +89,7 @@
  <div class='fixed inset-0 w-dvw bg-[url("/img/bg-mask-scaled.png")] bg-fixed brightness-25 bg-center bg-cover mix-blend-multiply opacity-90'>
 
 </div>
-<div class='w-full max-w-[100rem] min-w-sm mx-auto flex flex-col flex-1 z-1'>
+<div class='w-full max-w-[100rem] min-w-[320px] mx-auto flex flex-col flex-1 z-1'>
 	<header>
 		{@render navbar()}
 	</header>
