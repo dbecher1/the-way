@@ -43,7 +43,7 @@
 
 {#snippet footer()}
 <div class='bg-neutral text-neutral-content'>
-	<div class="footer footer-horizontal not-md:text-[10pt] p-6 md:p-10">
+	<div class="footer sm:footer-horizontal px-4 py-6 sm:p-6 md:p-10 not-sm:gap-6">
 		<div>
 			<h6 class='footer-title'>The Way</h6>
 			<div class='link link-hover'>
@@ -57,7 +57,7 @@
 			<div>Phone: 919.722.0761</div>
 			<div>
 				Email: 
-				<a href='mailto:info@the-way.chuch' class='link link-hover'>
+				<a href='mailto:info@the-way.church' class='link link-hover'>
 					info@the-way.church
 				</a>
 			</div>
@@ -73,8 +73,16 @@
 				</a>
 			</div>
 		</nav>
+		<aside class="sm:hidden text-[8pt] gap-0 -space-y-0.5">
+			<div>
+				&copy; 2025 The Way. All Rights Reserved.
+			</div>
+			<div>
+				Website by Ministry Brands.
+			</div>
+		</aside>
 	</div>
-	<aside class="p-6 md:px-10 text-[8pt] sm:text-[10pt] space-y-1.5 sm:space-y-0">
+	<aside class="not-sm:hidden px-8 pb-6 text-[8pt] space-y-1.5 sm:space-y-0">
 		<div>
 			&copy; 2025 The Way. All Rights Reserved.
 		</div>
@@ -82,6 +90,7 @@
 			Website by Ministry Brands.
 		</div>
 	</aside>
+	
 </div>
 {/snippet}
 

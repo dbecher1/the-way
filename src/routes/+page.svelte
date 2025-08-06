@@ -147,9 +147,9 @@
     </div>
 
     <div class='bg-base-100 text-base-content text-center w-full'>
-        <div class='mx-auto py-4 px-4 md:py-6'>
+        <div class='mx-auto px-4 py-4 md:py-6 lg:py-8'>
             <h1 class='text-secondary text-shadow-neutral text-shadow-sm/20 pb-4 md:pb-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold'>Welcome to The Way!</h1>
-            <div class='text-base-content/80 space-y-1 sm:max-w-7/8 md:max-w-3/4 lg:max-w-5/8 xl:max-w-1/2 sm:mx-auto pb-2 md:pb-4 text-[10pt] sm:text-sm md:text-md'>
+            <div class='text-base-content/80 space-y-3 md:space-y-5 sm:max-w-7/8 md:max-w-3/4 lg:max-w-5/8 xl:max-w-1/2 sm:mx-auto pb-2 md:pb-4 text-[10pt] sm:text-sm md:text-md'>
                 <div>
                     We&apos;re here to help people find their way to God, grow in their faith, and make a real difference in the world. Here at The Way, we&apos;re all about truthful, scripturally sound preaching, worship, and supporting one another, and our community, through prayer and service.
                 </div>
@@ -160,7 +160,7 @@
         </div>
     </div>
     <section id='learn-more' class='bg-primary'>
-        <div class='sm:max-w-7/8 md:max-w-3/4 lg:max-w-5/8 xl:max-w-1/2 sm:mx-auto py-8'>
+        <div class='sm:max-w-7/8 md:max-w-3/4 lg:max-w-5/8 xl:max-w-1/2 sm:mx-auto py-4 md:py-6 lg:py-8'>
             <div class='mx-auto flex flex-col text-primary-content font-semibold pb-4 sm:pb-6 md:pb-8 lg:pb-12'>
                 <div class='font-extrabold text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl py-3 sm:py-5 md:py-7 lg:py-10'>
                     Ministries and Services
