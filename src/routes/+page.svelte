@@ -141,8 +141,7 @@
         </div>  
         {/if}
         <div class='grid grid-cols-2 mx-auto gap-12 pt-2 px-10 lg:p-0'>
-            <a href='#learn-more' {onclick} class='md:max-w-50 btn btn-outline btn-primary not-md:max-w-32 btn-sm md:btn-lg lg:btn-xl btn-wide ml-auto'>Learn More</a>
-            <a href='/' class='md:max-w-50 btn btn-outline btn-secondary not-md:max-w-32 btn-sm md:btn-lg lg:btn-xl btn-wide mr-auto'>Give</a>
+            <a href='/' class='md:max-w-50 btn btn-outline btn-secondary not-md:max-w-32 btn-sm md:btn-lg lg:btn-xl btn-wide col-span-2 mx-auto'>Give</a>
         </div>
     </div>
 
